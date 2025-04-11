@@ -1,56 +1,65 @@
-let btnSubmit = document.querySelector("#btnsubmit");
-let btnLogin = document.querySelector("#btnLogin"); //
+const wrapper = document.querySelector(".wrapper");
+const signupHeader = document.querySelector(".signup header");
+const loginHeader = document.querySelector(".login header");
 
-let wrapper = document.querySelector(".wrapper");
-let signupHeader = document.querySelector(".signup header");
-let loginHeader = document.querySelector(".login header");
-
-let fullName = document.querySelector(".fullName");
-let email = document.querySelector(".email");
-let password = document.querySelector(".password");
-
-let email_login = document.querySelector(".email_login"); //
-let password_login = document.querySelector(".password_login"); //
-
-var userName = null;
-var userEmail = null;
-var userPassword = null;
-
-let showLogin = () => {
-  wrapper.classList.add("active");
-};
-let showSignup = () => {
-  wrapper.classList.remove("active");
-};
-loginHeader.addEventListener("click", () => showLogin());
-signupHeader.addEventListener("click", () => showSignup());
-
-btnSubmit.addEventListener("click", () => {
-  if (fullName.value != "" && email.value != "" && password.value != "") {
-    alert("Welcome " + fullName.value + " the account has been created.");
-    userName = fullName.value;
-    userEmail = email.value;
-    userPassword = password.value;
-    showLogin();
-    fullName.value = "";
-    email.value = "";
-    password.value = "";
-  }
+loginHeader.addEventListener("click", () => {
+wrapper.classList.add("active");
 });
 
-btnLogin.addEventListener("click", () => {
-  if (email_login.value != "" && password_login.value != "") {
-    if (
-      email_login.value == userEmail &&
-      password_login.value == userPassword
-    ) {
-      alert("Welcome Back " + userName);
-      email_login.value = "";
-      password_login.value = "";
-    } else {
-      alert("Incorrect email or password");
-      email_login.value = "";
-      password_login.value = "";
-    }
-  }
+signupHeader.addEventListener("click", () => {
+wrapper.classList.remove("active");
+});
+
+const signupSubmitButton = document.querySelector("#btnsubmit");
+const loginSubmitButton = document.querySelector("#btnlogin");
+
+const fullNameInput = document.querySelector(".fullName");
+const emailInput = document.querySelector(".email");
+const passwordInput = document.querySelector(".password");
+
+const emailLoginInput = document.querySelector(".email_login");
+const passwordLoginInput = document.querySelector(".password_login");
+
+let userName = null;
+let userEmail = null;
+let userPassword = null;
+
+const clearFormFields = (formElements) => {
+formElements.forEach(element => {
+if (element.value) {
+element.value = "";
+}
+});
+};
+
+signupSubmitButton.addEventListener("click", (e) => {
+e.preventDefault();
+if (fullNameInput.value !== "" && emailInput.value !== "" && passwordInput.value !== "") {
+alert("Welcome " + fullNameInput.value + " the account has been created.");
+userName = fullNameInput.value;
+userEmail = emailInput.value;
+userPassword = passwordInput.value;
+wrapper.classList.add("active"); // Go to login after signup
+clearFormFields([fullNameInput, emailInput, passwordInput]);
+} else {
+alert("Please fill all signup fields.");
+}
+});
+
+loginSubmitButton.addEventListener("click", (e) => {
+e.preventDefault();
+if (emailLoginInput.value !== "" && passwordLoginInput.value !== "") {
+if (
+emailLoginInput.value === userEmail &&
+passwordLoginInput.value === userPassword
+) {
+alert("Welcome Back " + userName);
+clearFormFields([emailLoginInput, passwordLoginInput]);
+} else {
+alert("Incorrect email or password");
+clearFormFields([emailLoginInput, passwordLoginInput]);
+}
+} else {
+alert("Please fill all login fields.");
+}
 });
