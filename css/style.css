@@ -1,0 +1,122 @@
+
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  width: 500px;
+  height: 600px;
+  background-color: #4070F4;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 15px 0px #33333341;
+}
+.wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.wrapper header {
+  font-size: 30px;
+  font-weight: 600;
+}
+.wrapper .signup header{
+  color: #fff;
+}
+.wrapper.active .signup header {
+  color: #ffffffa9;
+}
+.wrapper input:not([type="checkbox"]){
+  width: 100%;
+  height: 60px;
+  border: none;
+  outline: 0;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 20px;
+}
+.wrapper .terms {
+  color: #fff;
+  align-self: flex-start;
+}
+[type="submit"]{
+  cursor: pointer;
+}
+.wrapper .login {
+  position: absolute;
+  width: 150%;
+  height: 100%;
+  background-color: #fff;
+  top: 83.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  transition: 0.5s;
+}
+.wrapper .login header {
+  cursor: pointer;
+} 
+.wrapper.active .login header {
+  cursor: pointer;
+}
+.wrapper.active .login {
+bottom:15%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  padding: 30px 140px;
+}
+.wrapper.active .login input {
+  border: 1px solid #333;
+}
+.wrapper.active .login a {
+  padding: 5px;
+  align-self: flex-start;
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
+.wrapper.active .login a:hover {
+  text-decoration: underline;
+}
+.wrapper .login input[type=submit]{
+  background-color: #4070F4;
+  border: 0;
+  color: #fff;
+}
+
+
+
+
+
+.wrapper {
+  transition: transform 3s ease-in-out;
+  position: relative;
+}
+
+.wrapper.move-up {
+  transform: translateY(-250px);
+}
+
+.wrapper.move-up .signup input,
+.wrapper.move-up .signup .terms,
+.wrapper.move-up .signup input[type="submit"] {
+  display: none;
+}
+
+
+
+
+
